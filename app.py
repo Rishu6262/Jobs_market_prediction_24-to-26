@@ -101,7 +101,10 @@ if page == "Salary Prediction":
             "Job Type",
             sorted(df["Job_Type"].unique())
         )
-
+        Company = st.selectbox(
+            "Company",
+            sorted(df["Company"].unique())
+        )
         Work_Mode = st.selectbox(
             "Work Mode",
             sorted(df["Work_Mode"].unique())
@@ -140,18 +143,18 @@ if page == "Salary Prediction":
         )
         
 st.markdown("---")
-
 if st.button("🚀 Predict Salary"):
 
         model = joblib.load(
             model_files[model_choice]
         )
-        day = selected_date.day
-        month = selected_date.month
-        year = selected_date.year
+        day = Date_Posted.day
+        month = Date_Posted.month
+        year = Date_Posted.year
 
         input_data = pd.DataFrame({
             "Job_Title":[Job_Title],
+            "Company":[Company],
             "Company_Type":[Company_Type],
             "Industry":[Industry],
             "City":[City],
@@ -178,7 +181,6 @@ if st.button("🚀 Predict Salary"):
 # ==========================
 # VISUALIZATION PAGE
 # ==========================
-
 if page == "Data Visualization":
 
     st.title("📊 Job Market Dashboard")
