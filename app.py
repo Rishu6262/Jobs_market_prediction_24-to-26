@@ -174,8 +174,7 @@ if st.button("🚀 Predict Salary"):
     })
 
     prediction = model.predict(input_data)
-
-        st.success(
+st.success(
             f"🎯 Predicted Salary : ₹ {prediction[0]:.2f} LPA"
         )
 
