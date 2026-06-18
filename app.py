@@ -170,7 +170,7 @@ if st.button("🚀 Predict Salary"):
 
     st.write("Input Features")
     st.write(list(input_df.columns))
-
+    st.write(input_df)
     prediction = model.predict(input_df)
 
     st.success(
