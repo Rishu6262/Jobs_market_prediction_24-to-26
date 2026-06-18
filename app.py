@@ -1,248 +1,237 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import plotly.express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# -------------------------
+# PAGE CONFIG
+# -------------------------
 
 st.set_page_config(
-    page_title="AI Job Salary Prediction",
+    page_title="AI Job Salary Predictor",
     page_icon="💼",
     layout="wide"
 )
 
-# =========================
-# LOAD DATASET
-# =========================
+# -------------------------
+# LOAD DATA
+# -------------------------
 
 df = pd.read_csv("india_job_market_2024_2026.csv")
 
-# =========================
-# LOAD MODELS
-# =========================
+# -------------------------
+# SIDEBAR
+# -------------------------
 
-models = {
-    "Random Forest": joblib.load("random_forest.pkl"),
-    "XGBoost": joblib.load("xgboost.pkl"),
-    "Gradient Boosting": joblib.load("gradient_boosting.pkl"),
-    "Decision Tree": joblib.load("decision_tree.pkl")
+st.sidebar.title("💼 Navigation")
+
+page = st.sidebar.radio(
+    "Choose Section",
+    [
+        "Salary Prediction",
+        "Data Visualization"
+    ]
+)
+
+# -------------------------
+# MODEL FILES
+# -------------------------
+
+model_files = {
+    "Random Forest":"random_forest.pkl",
+    "XGBoost":"xgboost.pkl",
+    "Extra Trees":"extra_trees.pkl",
+    "Gradient Boosting":"gradient_boosting.pkl",
+    "Decision Tree":"decision_tree.pkl"
 }
 
-# =========================
-# HEADER
-# =========================
+# ==========================
+# PREDICTION PAGE
+# ==========================
 
-st.title("💼 AI Job Salary Prediction System")
+if page == "Salary Prediction":
 
-st.markdown(
-"""
-Predict Salary Packages using Multiple Machine Learning Models.
-"""
-)
+    st.title("💰 AI Job Salary Prediction System")
 
-# =========================
-# SIDEBAR
-# =========================
+    st.markdown("---")
 
-st.sidebar.header("Model Selection")
+    col1, col2 = st.columns(2)
 
-model_name = st.sidebar.selectbox(
-    "Choose Model",
-    list(models.keys())
-)
+    with col1:
 
-model = models[model_name]
+        model_choice = st.selectbox(
+            "Select ML Model",
+            list(model_files.keys())
+        )
 
-# =========================
-# USER INPUTS
-# =========================
+        Job_Title = st.selectbox(
+            "Job Title",
+            sorted(df["Job_Title"].unique())
+        )
 
-st.subheader("📋 Enter Job Details")
+        Company_Type = st.selectbox(
+            "Company Type",
+            sorted(df["Company_Type"].unique())
+        )
 
-col1, col2 = st.columns(2)
+        Industry = st.selectbox(
+            "Industry",
+            sorted(df["Industry"].unique())
+        )
 
-with col1:
+        City = st.selectbox(
+            "City",
+            sorted(df["City"].unique())
+        )
 
-    company_type = st.selectbox(
-        "Company Type",
-        sorted(df["Company_Type"].unique())
-    )
+        Location_Tier = st.selectbox(
+            "Location Tier",
+            sorted(df["Location_Tier"].unique())
+        )
 
-    industry = st.selectbox(
-        "Industry",
-        sorted(df["Industry"].unique())
-    )
+        Experience_Level = st.selectbox(
+            "Experience Level",
+            sorted(df["Experience_Level"].unique())
+        )
+        Date_Posted = st.date_input(
+            "Date Posted"
+        )
 
-    city = st.selectbox(
+    with col2:
+
+        Job_Type = st.selectbox(
+            "Job Type",
+            sorted(df["Job_Type"].unique())
+        )
+
+        Work_Mode = st.selectbox(
+            "Work Mode",
+            sorted(df["Work_Mode"].unique())
+        )
+
+        Skills_Required = st.selectbox(
+            "Skills Required",
+            sorted(df["Skills_Required"].unique())
+        )
+
+        Education_Required = st.selectbox(
+            "Education Required",
+            sorted(df["Education_Required"].unique())
+        )
+
+        Openings = st.number_input(
+            "Openings",
+            min_value=1,
+            value=5
+        )
+
+        Applicants = st.number_input(
+            "Applicants",
+            min_value=0,
+            value=100
+        )
+
+        Company_Rating = st.slider(
+            "Company Rating",
+            1.0,
+            5.0,
+            4.0
+        )
+
+    st.markdown("---")
+
+    if st.button("🚀 Predict Salary"):
+
+        model = joblib.load(
+            model_files[model_choice]
+        )
+
+        input_data = pd.DataFrame({
+            "Job_Title":[Job_Title],
+            "Company_Type":[Company_Type],
+            "Industry":[Industry],
+            "City":[City],
+            "Location_Tier":[Location_Tier],
+            "Experience_Level":[Experience_Level],
+            "Job_Type":[Job_Type],
+            "Work_Mode":[Work_Mode],
+            "Skills_Required":[Skills_Required],
+            "Education_Required":[Education_Required],
+            "Openings":[Openings],
+            "Applicants":[Applicants],
+            "Company_Rating":[Company_Rating],
+            "Date_Posted":[Date_Posted]
+        })
+
+        prediction = model.predict(input_data)
+
+        st.success(
+            f"🎯 Predicted Salary : ₹ {prediction[0]:.2f} LPA"
+        )
+
+# ==========================
+# VISUALIZATION PAGE
+# ==========================
+
+if page == "Data Visualization":
+
+    st.title("📊 Job Market Dashboard")
+
+    tab1, tab2, tab3, tab4 = st.tabs([
+        "Salary",
         "City",
-        sorted(df["City"].unique())
-    )
+        "Industry",
+        "Work Mode"
+    ])
 
-    location_tier = st.selectbox(
-        "Location Tier",
-        sorted(df["Location_Tier"].unique())
-    )
+    with tab1:
 
-    experience = st.selectbox(
-        "Experience Level",
-        sorted(df["Experience_Level"].unique())
-    )
+        fig, ax = plt.subplots(figsize=(8,4))
 
-with col2:
+        sns.histplot(
+            df["Salary_LPA"],
+            kde=True,
+            ax=ax
+        )
 
-    job_type = st.selectbox(
-        "Job Type",
-        sorted(df["Job_Type"].unique())
-    )
+        st.pyplot(fig)
 
-    work_mode = st.selectbox(
-        "Work Mode",
-        sorted(df["Work_Mode"].unique())
-    )
+    with tab2:
 
-    education = st.selectbox(
-        "Education Required",
-        sorted(df["Education_Required"].unique())
-    )
+        fig, ax = plt.subplots(figsize=(10,5))
 
-    company_rating = st.slider(
-        "Company Rating",
-        1.0,
-        5.0,
-        4.0
-    )
+        df["City"].value_counts().head(10).plot(
+            kind="bar",
+            ax=ax
+        )
 
-    openings = st.number_input(
-        "Openings",
-        min_value=1,
-        value=5
-    )
+        st.pyplot(fig)
 
-# =========================
-# ADDITIONAL INPUTS
-# =========================
+    with tab3:
 
-job_title = st.selectbox(
-    "Job Title",
-    sorted(df["Job_Title"].unique())
-)
+        fig, ax = plt.subplots(figsize=(10,5))
 
-company = st.selectbox(
-    "Company",
-    sorted(df["Company"].unique())
-)
-
-skills = st.selectbox(
-    "Skills Required",
-    sorted(df["Skills_Required"].unique())
-)
-
-applicants = st.number_input(
-    "Applicants",
-    min_value=0,
-    value=100
-)
-
-# =========================
-# PREDICT BUTTON
-# =========================
-
-if st.button("🚀 Predict Salary"):
-
-    input_df = pd.DataFrame({
-
-        "Job_Title":[job_title],
-        "Company":[company],
-        "Company_Type":[company_type],
-        "Industry":[industry],
-        "City":[city],
-        "Location_Tier":[location_tier],
-        "Experience_Level":[experience],
-        "Job_Type":[job_type],
-        "Work_Mode":[work_mode],
-        "Skills_Required":[skills],
-        "Education_Required":[education],
-        "Openings":[openings],
-        "Applicants":[applicants],
-        "Company_Rating":[company_rating]
-
-    })
-    try:
-    prediction = model.predict(input_df)
-    st.success(f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA")
-
-except Exception as e:
-    st.error(str(e))
-    st.write("Input Columns:", list(input_df.columns))
-    st.stop()
-    prediction = model.predict(input_df)
-
-    st.success(
-        f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA"
-    )
-
-    # =========================
-    # VISUALIZATION
-    # =========================
-
-    st.subheader("📊 Dataset Insights")
-
-    c1, c2 = st.columns(2)
-
-    with c1:
-
-        fig = px.box(
-            df,
-            x="Experience_Level",
+        sns.boxplot(
+            data=df,
+            x="Industry",
             y="Salary_LPA",
-            title="Salary by Experience"
+            ax=ax
         )
 
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+        plt.xticks(rotation=90)
 
-    with c2:
+        st.pyplot(fig)
 
-        fig2 = px.bar(
-            df.groupby("Work_Mode")["Salary_LPA"]
-            .mean()
-            .reset_index(),
+    with tab4:
+
+        fig, ax = plt.subplots(figsize=(8,4))
+
+        sns.barplot(
+            data=df,
             x="Work_Mode",
             y="Salary_LPA",
-            title="Average Salary by Work Mode"
+            ax=ax
         )
 
-        st.plotly_chart(
-            fig2,
-            use_container_width=True
-        )
-
-    st.subheader("🏙️ City Wise Salary")
-
-    fig3 = px.bar(
-        df.groupby("City")["Salary_LPA"]
-        .mean()
-        .sort_values(ascending=False)
-        .head(10)
-        .reset_index(),
-        x="City",
-        y="Salary_LPA"
-    )
-
-    st.plotly_chart(
-        fig3,
-        use_container_width=True
-    )
-
-    st.subheader("🏢 Company Type Salary")
-
-    fig4 = px.pie(
-        df,
-        names="Company_Type",
-        title="Company Type Distribution"
-    )
-
-    st.plotly_chart(
-        fig4,
-        use_container_width=True
-    )
+        st.pyplot(fig)
