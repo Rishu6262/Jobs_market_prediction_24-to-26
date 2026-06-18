@@ -169,7 +169,7 @@ if st.button("🚀 Predict Salary"):
     prediction = model.predict(input_df)
     st.success(f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA")
 
-    except Exception as e:
+except Exception as e:
     st.error(str(e))
     st.write("Input Columns:", list(input_df.columns))
     st.stop()
