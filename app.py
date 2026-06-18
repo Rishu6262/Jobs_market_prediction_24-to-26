@@ -138,6 +138,7 @@ if page == "Salary Prediction":
             5.0,
             4.0
         )
+        
 st.markdown("---")
 
 if st.button("🚀 Predict Salary"):
