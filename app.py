@@ -161,7 +161,9 @@ if page == "Salary Prediction":
             "Openings":[Openings],
             "Applicants":[Applicants],
             "Company_Rating":[Company_Rating],
-            "Date_Posted":[Date_Posted]
+            "Day":[day],
+            "Month":[month],
+            "Year":[year]
         })
 
         prediction = model.predict(input_data)
