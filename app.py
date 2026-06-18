@@ -165,6 +165,11 @@ if st.button("🚀 Predict Salary"):
         "Company_Rating":[company_rating]
 
     })
+    st.write("Model Features")
+    st.write(list(model.feature_names_in_))
+
+    st.write("Input Features")
+    st.write(list(input_df.columns))
 
     prediction = model.predict(input_df)
 
