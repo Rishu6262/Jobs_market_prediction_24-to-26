@@ -165,12 +165,14 @@ if st.button("🚀 Predict Salary"):
         "Company_Rating":[company_rating]
 
     })
-    st.write("Model Features")
-    st.write(list(model.feature_names_in_))
+    try:
+    prediction = model.predict(input_df)
+    st.success(f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA")
 
-    st.write("Input Features")
-    st.write(list(input_df.columns))
-    st.write(input_df)
+    except Exception as e:
+    st.error(str(e))
+    st.write("Input Columns:", list(input_df.columns))
+    st.stop()
     prediction = model.predict(input_df)
 
     st.success(
