@@ -94,9 +94,6 @@ if page == "Salary Prediction":
             "Experience Level",
             sorted(df["Experience_Level"].unique())
         )
-        Date_Posted = st.date_input(
-            "Date Posted"
-        )
 
     with col2:
 
@@ -119,6 +116,9 @@ if page == "Salary Prediction":
             "Education Required",
             sorted(df["Education_Required"].unique())
         )
+        Date_Posted = st.date_input(
+            "Date Posted"
+        )
 
         Openings = st.number_input(
             "Openings",
@@ -139,42 +139,39 @@ if page == "Salary Prediction":
             4.0
         )
 
-st.markdown("---")
+    st.markdown("---")
 
-if st.button("🚀 Predict Salary"):
+    if st.button("🚀 Predict Salary"):
 
-    model = joblib.load(
-        model_files[model_choice]
-    )
+        model = joblib.load(
+            model_files[model_choice]
+        )
+        day = selected_date.day
+        month = selected_date.month
+        year = selected_date.year
 
-    
+        input_data = pd.DataFrame({
+            "Job_Title":[Job_Title],
+            "Company_Type":[Company_Type],
+            "Industry":[Industry],
+            "City":[City],
+            "Location_Tier":[Location_Tier],
+            "Experience_Level":[Experience_Level],
+            "Job_Type":[Job_Type],
+            "Work_Mode":[Work_Mode],
+            "Skills_Required":[Skills_Required],
+            "Education_Required":[Education_Required],
+            "Openings":[Openings],
+            "Applicants":[Applicants],
+            "Company_Rating":[Company_Rating],
+            "Day":[day],
+            "Month":[month],
+            "Year":[year]
+        })
 
-    day = selected_date.day
-    month = selected_date.month
-    year = selected_date.year
+        prediction = model.predict(input_data)
 
-    input_data = pd.DataFrame({
-        "Job_Title":[Job_Title],
-        "Company":[Company],
-        "Company_Type":[Company_Type],
-        "Industry":[Industry],
-        "City":[City],
-        "Location_Tier":[Location_Tier],
-        "Experience_Level":[Experience_Level],
-        "Job_Type":[Job_Type],
-        "Work_Mode":[Work_Mode],
-        "Skills_Required":[Skills_Required],
-        "Education_Required":[Education_Required],
-        "Openings":[Openings],
-        "Applicants":[Applicants],
-        "Company_Rating":[Company_Rating],
-        "Day":[day],
-        "Month":[month],
-        "Year":[year]
-    })
-
-    prediction = model.predict(input_data)
-st.success(
+        st.success(
             f"🎯 Predicted Salary : ₹ {prediction[0]:.2f} LPA"
         )
 
