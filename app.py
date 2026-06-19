@@ -69,6 +69,10 @@ if page == "Salary Prediction":
             "Job Title",
             sorted(df["Job_Title"].unique())
         )
+        Company = st.selectbox(
+            "Company",
+            sorted(df["Company"].unique())
+        )
 
         Company_Type = st.selectbox(
             "Company Type",
@@ -135,6 +139,13 @@ if page == "Salary Prediction":
             5.0,
             4.0
         )
+        date_input = st.date_input(
+        "Job Posted Date"
+        )
+
+        Day = date_input.day
+        Month = date_input.month
+        Year = date_input.year
 
     st.markdown("---")
 
@@ -157,9 +168,16 @@ if page == "Salary Prediction":
             "Education_Required":[Education_Required],
             "Openings":[Openings],
             "Applicants":[Applicants],
-            "Company_Rating":[Company_Rating]
+            "Company_Rating":[Company_Rating],
+            "Day":[Day],
+            "Month":[Month],
+            "Year":[Year]
         })
+        st.write("Input Columns")
+        st.write(input_data.columns.tolist())
 
+        st.write("Model Features")
+        st.write(model.feature_names_in_)
         prediction = model.predict(input_data)
 
         st.success(
