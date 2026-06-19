@@ -153,6 +153,7 @@ if page == "Salary Prediction":
 
         input_data = pd.DataFrame({
             "Job_Title":[Job_Title],
+            "Company":[Company],
             "Company_Type":[Company_Type],
             "Industry":[Industry],
             "City":[City],
