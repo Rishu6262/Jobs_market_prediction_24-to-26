@@ -165,7 +165,7 @@ if page == "Salary Prediction":
             "Openings":[Openings],
             "Applicants":[Applicants],
             "Company_Rating":[Company_Rating],
-            "Date_Posted":[str(date_input)]TT
+            "Date_Posted":[str(date_input)]
         })
         st.write("Input Columns")
         st.write(input_data.columns.tolist())
