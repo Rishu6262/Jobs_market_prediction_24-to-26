@@ -172,7 +172,7 @@ if page == "Salary Prediction":
         st.write(input_data.columns.tolist())
 
         st.write("Model Features")
-        st.write(model.feature_names_in_)
+        st.write(list(model.feature_names_in_))
         prediction = model.predict(input_data)
 
         st.success(
