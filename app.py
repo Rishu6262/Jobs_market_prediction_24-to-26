@@ -231,7 +231,7 @@ if page == "Data Visualization":
         )
 
         st.pyplot(fig)
-me code de raha hu aap fix karke do 
+
 encoders = joblib.load("label_encoders.pkl")
 
 if st.button("🚀 Predict Salary"):
