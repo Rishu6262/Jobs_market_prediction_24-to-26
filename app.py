@@ -171,7 +171,11 @@ if st.button("🚀 Predict Salary"):
             "Month":[month],
             "Year":[year]
         })
+             st.write("Model Features:")
+             st.write(list(model.feature_names_in_))
 
+             st.write("Input Features:")
+            st.write(list(input_data.columns))   
         prediction = model.predict(input_data)
 
         st.success(
