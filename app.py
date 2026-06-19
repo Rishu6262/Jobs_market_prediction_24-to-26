@@ -140,12 +140,8 @@ if page == "Salary Prediction":
             4.0
         )
         date_input = st.date_input(
-        "Job Posted Date"
+            "Date Posted"
         )
-
-        Day = date_input.day
-        Month = date_input.month
-        Year = date_input.year
 
     st.markdown("---")
 
@@ -169,9 +165,7 @@ if page == "Salary Prediction":
             "Openings":[Openings],
             "Applicants":[Applicants],
             "Company_Rating":[Company_Rating],
-            "Day":[Day],
-            "Month":[Month],
-            "Year":[Year]
+            "Date_Posted":[str(date_input)]TT
         })
         st.write("Input Columns")
         st.write(input_data.columns.tolist())
