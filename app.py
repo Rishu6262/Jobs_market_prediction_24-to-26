@@ -101,10 +101,7 @@ if page == "Salary Prediction":
             "Job Type",
             sorted(df["Job_Type"].unique())
         )
-        Company = st.selectbox(
-            "Company",
-            sorted(df["Company"].unique())
-        )
+
         Work_Mode = st.selectbox(
             "Work Mode",
             sorted(df["Work_Mode"].unique())
@@ -118,9 +115,6 @@ if page == "Salary Prediction":
         Education_Required = st.selectbox(
             "Education Required",
             sorted(df["Education_Required"].unique())
-        )
-        Date_Posted = st.date_input(
-            "Date Posted"
         )
 
         Openings = st.number_input(
@@ -141,20 +135,17 @@ if page == "Salary Prediction":
             5.0,
             4.0
         )
-        
-st.markdown("---")
-if st.button("🚀 Predict Salary"):
+
+    st.markdown("---")
+
+    if st.button("🚀 Predict Salary"):
 
         model = joblib.load(
             model_files[model_choice]
         )
-        day = Date_Posted.day
-        month = Date_Posted.month
-        year = Date_Posted.year
 
         input_data = pd.DataFrame({
             "Job_Title":[Job_Title],
-            "Company":[Company],
             "Company_Type":[Company_Type],
             "Industry":[Industry],
             "City":[City],
@@ -166,16 +157,9 @@ if st.button("🚀 Predict Salary"):
             "Education_Required":[Education_Required],
             "Openings":[Openings],
             "Applicants":[Applicants],
-            "Company_Rating":[Company_Rating],
-            "Day":[day],
-            "Month":[month],
-            "Year":[year]
+            "Company_Rating":[Company_Rating]
         })
-             st.write("Model Features:")
-             st.write(list(model.feature_names_in_))
 
-             st.write("Input Features:")
-            st.write(list(input_data.columns))   
         prediction = model.predict(input_data)
 
         st.success(
@@ -185,6 +169,7 @@ if st.button("🚀 Predict Salary"):
 # ==========================
 # VISUALIZATION PAGE
 # ==========================
+
 if page == "Data Visualization":
 
     st.title("📊 Job Market Dashboard")
@@ -246,3 +231,66 @@ if page == "Data Visualization":
         )
 
         st.pyplot(fig)
+me code de raha hu aap fix karke do 
+encoders = joblib.load("label_encoders.pkl")
+
+if st.button("🚀 Predict Salary"):
+
+    model = joblib.load(model_files[model_choice])
+
+    input_data = pd.DataFrame({
+        "Job_Title":[Job_Title],
+        "Company":[Company],
+        "Company_Type":[Company_Type],
+        "Industry":[Industry],
+        "City":[City],
+        "Location_Tier":[Location_Tier],
+        "Experience_Level":[Experience_Level],
+        "Job_Type":[Job_Type],
+        "Work_Mode":[Work_Mode],
+        "Skills_Required":[Skills_Required],
+        "Education_Required":[Education_Required],
+        "Openings":[Openings],
+        "Applicants":[Applicants],
+        "Company_Rating":[Company_Rating],
+        "Date_Posted":[str(Date_Posted)]
+    })
+
+    categorical_cols = [
+        "Job_Title",
+        "Company",
+        "Company_Type",
+        "Industry",
+        "City",
+        "Location_Tier",
+        "Experience_Level",
+        "Job_Type",
+        "Work_Mode",
+        "Skills_Required",
+        "Education_Required",
+        "Date_Posted"
+    ]
+
+    for col in categorical_cols:
+        input_data[col] = encoders[col].transform(
+            input_data[col]
+        )
+
+    prediction = model.predict(input_data)
+
+    st.success(
+        f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA"
+    )
+Company Input Add Karo
+
+with col2: ke andar:
+
+Company = st.selectbox(
+    "Company",
+    sorted(df["Company"].unique())
+)
+Date Input
+Date_Posted = st.selectbox(
+    "Date Posted",
+    sorted(df["Date_Posted"].unique())
+)
