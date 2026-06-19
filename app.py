@@ -281,7 +281,6 @@ if st.button("🚀 Predict Salary"):
     st.success(
         f"💰 Predicted Salary: ₹ {prediction[0]:.2f} LPA"
     )
-Company Input Add Karo
 
 with col2: ke andar:
 
