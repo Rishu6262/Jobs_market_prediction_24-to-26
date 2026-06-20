@@ -260,6 +260,15 @@ Rishu Gurjar
 B.Tech Student | Python Developer | Machine Learning Enthusiast | Data Science Learner
 
 ---
+## 📌 Conclusion
+
+The AI-Powered Job Salary Prediction System successfully demonstrates the application of Machine Learning techniques to predict job salaries based on various job-related attributes such as job title, company type, industry, location, experience level, work mode, skills required, and company ratings.
+
+Multiple regression models were trained and evaluated, including Decision Tree, Gradient Boosting, Extra Trees, XGBoost, and Random Forest Regressors. Among all models, the Random Forest Regressor achieved the highest performance with an R² Score of 0.9337, making it the most accurate model for salary prediction.
+
+The project not only provides reliable salary predictions but also offers an interactive Streamlit dashboard for data visualization and model comparison. Through this project, valuable insights into the Indian job market were obtained, helping users understand salary trends across different industries, cities, and job roles.
+
+Overall, this project showcases the practical implementation of Data Science, Machine Learning, Data Visualization, and Web Application Development, making it a comprehensive real-world solution for salary prediction and job market analysis.
 
 ## 📜 Disclaimer
 
