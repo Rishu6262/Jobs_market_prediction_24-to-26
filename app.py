@@ -174,7 +174,11 @@ if page == "Salary Prediction":
         st.write("Model Features")
         st.write(list(model.feature_names_in_))
         prediction = model.predict(input_data)
+        encoders = joblib.load("label_encoders.pkl")
 
+for col in input_data.columns:
+    if col in encoders:
+        input_data[col] = encoders[col].transform(input_data[col])
         st.success(
             f"🎯 Predicted Salary : ₹ {prediction[0]:.2f} LPA"
         )
