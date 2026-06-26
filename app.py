@@ -147,41 +147,55 @@ if page == "Salary Prediction":
 
 if st.button("🚀 Predict Salary"):
 
-        model = joblib.load(
-            model_files[model_choice]
-        )
+    model = joblib.load(model_files[model_choice])
 
-        input_data = pd.DataFrame({
-            "Job_Title":[Job_Title],
-            "Company":[Company],
-            "Company_Type":[Company_Type],
-            "Industry":[Industry],
-            "City":[City],
-            "Location_Tier":[Location_Tier],
-            "Experience_Level":[Experience_Level],
-            "Job_Type":[Job_Type],
-            "Work_Mode":[Work_Mode],
-            "Skills_Required":[Skills_Required],
-            "Education_Required":[Education_Required],
-            "Openings":[Openings],
-            "Applicants":[Applicants],
-            "Company_Rating":[Company_Rating],
-            "Date_Posted":[str(date_input)]
-        })
-        st.write("Input Columns")
-        st.write(input_data.columns.tolist())
+    input_data = pd.DataFrame({
+        "Job_Title": [Job_Title],
+        "Company": [Company],
+        "Company_Type": [Company_Type],
+        "Industry": [Industry],
+        "City": [City],
+        "Location_Tier": [Location_Tier],
+        "Experience_Level": [Experience_Level],
+        "Job_Type": [Job_Type],
+        "Work_Mode": [Work_Mode],
+        "Skills_Required": [Skills_Required],
+        "Education_Required": [Education_Required],
+        "Openings": [Openings],
+        "Applicants": [Applicants],
+        "Company_Rating": [Company_Rating],
+        "Date_Posted": [str(date_input)]
+    })
 
-        st.write("Model Features")
-        st.write(list(model.feature_names_in_))
-        prediction = model.predict(input_data)
-        encoders = joblib.load("label_encoders.pkl")
+    # Load Encoders
+    encoders = joblib.load("label_encoders.pkl")
 
-for col in input_data.columns:
-    if col in encoders:
+    categorical_cols = [
+        "Job_Title",
+        "Company",
+        "Company_Type",
+        "Industry",
+        "City",
+        "Location_Tier",
+        "Experience_Level",
+        "Job_Type",
+        "Work_Mode",
+        "Skills_Required",
+        "Education_Required",
+        "Date_Posted"
+    ]
+
+    # Encode categorical columns
+    for col in categorical_cols:
         input_data[col] = encoders[col].transform(input_data[col])
-        st.success(
-            f"🎯 Predicted Salary : ₹ {prediction[0]:.2f} LPA"
-        )
+
+    # Agar scaler use kiya tha to uncomment karo
+    # scaler = joblib.load("scaler.pkl")
+    # input_data = scaler.transform(input_data)
+
+    prediction = model.predict(input_data)
+
+    st.success(f"🎯 Predicted Salary: ₹ {prediction[0]:.2f} LPA")
 
 # ==========================
 # VISUALIZATION PAGE
