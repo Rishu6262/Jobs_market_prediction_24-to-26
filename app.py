@@ -145,7 +145,7 @@ if page == "Salary Prediction":
 
     st.markdown("---")
 
-    if st.button("🚀 Predict Salary"):
+if st.button("🚀 Predict Salary"):
 
         model = joblib.load(
             model_files[model_choice]
