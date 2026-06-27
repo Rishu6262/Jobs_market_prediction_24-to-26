@@ -1,112 +1,169 @@
 # 💼 AI-Powered Job Salary Prediction System
 
-## 📌 Project Overview
+<p align="center">
 
-The AI-Powered Job Salary Prediction System is a Machine Learning project designed to predict the expected salary (LPA) of a job posting based on multiple job-related factors such as job title, company, industry, location, experience level, work mode, education requirements, company rating, and more.
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge\&logo=python)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge\&logo=scikitlearn)
+![XGBoost](https://img.shields.io/badge/XGBoost-Regressor-success?style=for-the-badge)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-red?style=for-the-badge\&logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-This project compares multiple Machine Learning algorithms and allows users to select different models for salary prediction through an interactive Streamlit web application.
-
----
-
-## 🚀 Features
-
-* Predict Job Salary in LPA
-* Multiple Machine Learning Models
-* Interactive Streamlit User Interface
-* Real-Time Salary Prediction
-* Job Market Data Visualization Dashboard
-* Model Comparison and Evaluation
-* User-Friendly Input Selection
-* Industry-wise Salary Analysis
-* City-wise Job Analysis
-* Work Mode Analysis
-* Company Type Analysis
+</p>
 
 ---
 
-## 📊 Dataset Information
+# 📌 Project Overview
 
-The dataset contains Indian job market information collected from various sectors between 2024 and 2026.
+The **AI-Powered Job Salary Prediction System** is a Machine Learning web application that predicts the expected salary (LPA) of job opportunities using real-world job market features.
 
-### Dataset Features
+The system has been developed using multiple regression algorithms and deployed with **Streamlit**, allowing users to compare different Machine Learning models and predict salaries through an interactive interface.
 
-| Feature            | Description                     |
-| ------------------ | ------------------------------- |
-| Job_Title          | Job Position Name               |
-| Company            | Company Name                    |
-| Company_Type       | Startup, MNC, PSU/Govt, Unicorn |
-| Industry           | Industry Category               |
-| City               | Job Location                    |
-| Location_Tier      | Tier 1, Tier 2, Tier 3 Cities   |
-| Experience_Level   | Fresher, Junior, Mid, Senior    |
-| Job_Type           | Full-Time, Part-Time, Contract  |
-| Work_Mode          | Remote, Hybrid, Onsite          |
-| Skills_Required    | Required Skills                 |
-| Education_Required | Educational Qualification       |
-| Openings           | Number of Vacancies             |
-| Applicants         | Number of Applicants            |
-| Company_Rating     | Company Rating                  |
-| Date_Posted        | Job Posting Date                |
-| Salary_LPA         | Target Variable                 |
+The project also provides a complete **Job Market Analytics Dashboard** that helps users understand hiring trends, salary distribution, work modes, industries, and city-wise opportunities.
 
 ---
 
-## ⚙️ Machine Learning Workflow
+# 🎯 Objectives
 
-### Data Preprocessing
+* Predict salary using Machine Learning
+* Compare multiple regression algorithms
+* Analyze Indian Job Market trends
+* Build an interactive web application
+* Visualize recruitment insights
+* Deploy a real-world ML project
 
-* Handling Missing Values
+---
+
+# ✨ Key Features
+
+✔ Salary Prediction
+
+✔ Multiple ML Model Selection
+
+✔ Interactive Streamlit Dashboard
+
+✔ Job Market Analytics
+
+✔ Company-wise Analysis
+
+✔ Industry-wise Salary Analysis
+
+✔ Work Mode Analysis
+
+✔ City-wise Hiring Analysis
+
+✔ Easy-to-use Interface
+
+✔ Model Comparison
+
+---
+
+# 📊 Dataset
+
+The dataset represents Indian Job Market information from **2024–2026**.
+
+### Features
+
+| Feature            | Description                      |
+| ------------------ | -------------------------------- |
+| Job_Title          | Job Position                     |
+| Company            | Company Name                     |
+| Company_Type       | Startup, MNC, PSU/Govt, Unicorn  |
+| Industry           | Industry Sector                  |
+| City               | Job Location                     |
+| Location_Tier      | Tier 1 / Tier 2 / Tier 3         |
+| Experience_Level   | Fresher / Junior / Mid / Senior  |
+| Job_Type           | Full-Time / Part-Time / Contract |
+| Work_Mode          | Remote / Hybrid / Onsite         |
+| Skills_Required    | Required Technical Skills        |
+| Education_Required | Required Qualification           |
+| Openings           | Number of Vacancies              |
+| Applicants         | Total Applicants                 |
+| Company_Rating     | Company Rating                   |
+| Date_Posted        | Job Posting Date                 |
+| Salary_LPA         | Target Variable                  |
+
+---
+
+# ⚙ Machine Learning Workflow
+
+```text
+Data Collection
+       │
+       ▼
+Data Cleaning
+       │
+       ▼
+Feature Engineering
+       │
+       ▼
+Label Encoding
+       │
+       ▼
+Feature Scaling
+       │
+       ▼
+Train-Test Split
+       │
+       ▼
+Model Training
+       │
+       ▼
+Model Evaluation
+       │
+       ▼
+Model Saving (.pkl)
+       │
+       ▼
+Streamlit Deployment
+```
+
+---
+
+# 🔍 Data Preprocessing
+
+* Missing Value Handling
+* Duplicate Removal
 * Label Encoding
-* Date Feature Engineering
-* Feature Selection
-* Data Transformation
-* Feature Scaling using StandardScaler
+* Feature Scaling
+* Feature Engineering
+* Date Transformation
+* Train-Test Split
 
 ### Feature Engineering
 
-Date Posted column was transformed into:
+`Date_Posted`
+
+↓
 
 * Day
 * Month
 * Year
 
-for improved model performance.
+---
+
+# 🤖 Machine Learning Models
+
+| Model                       |      R² Score |
+| --------------------------- | ------------: |
+| Random Forest Regressor     | **0.9337** 🏆 |
+| XGBoost Regressor           |        0.9302 |
+| Extra Trees Regressor       |        0.9259 |
+| Gradient Boosting Regressor |        0.9051 |
+| Decision Tree Regressor     |        0.8581 |
+
+### 🏆 Best Performing Model
+
+**Random Forest Regressor**
+
+* Highest Accuracy
+* Lowest Prediction Error
+* Best Generalization Performance
 
 ---
 
-## 🤖 Machine Learning Models Used
+# 📈 Evaluation Metrics
 
-### 1. Decision Tree Regressor
-
-* R² Score: 0.8581
-
-### 2. Gradient Boosting Regressor
-
-* R² Score: 0.9051
-
-### 3. Extra Trees Regressor
-
-* R² Score: 0.9259
-
-### 4. XGBoost Regressor
-
-* R² Score: 0.9302
-
-### 5. Random Forest Regressor
-
-* R² Score: 0.9337
-
-### Best Model
-
-🏆 Random Forest Regressor
-
-R² Score: 0.9337
-
----
-
-## 📈 Model Evaluation Metrics
-
-The following evaluation metrics were used:
+The following metrics were used:
 
 * R² Score
 * Mean Absolute Error (MAE)
@@ -115,14 +172,13 @@ The following evaluation metrics were used:
 
 ---
 
-## 🖥️ Streamlit Application
+# 🖥 Streamlit Application
 
-The Streamlit application provides:
+## Salary Prediction
 
-### Salary Prediction Page
+Users can choose
 
-Users can select:
-
+* ML Model
 * Job Title
 * Company
 * Company Type
@@ -134,145 +190,154 @@ Users can select:
 * Work Mode
 * Skills Required
 * Education Required
-* Company Rating
 * Openings
 * Applicants
+* Company Rating
 * Date Posted
 
-and receive an instant salary prediction.
+↓
 
-### Data Visualization Dashboard
+**Predicted Salary (LPA)**
 
-Interactive visualizations include:
+---
+
+## Analytics Dashboard
+
+The dashboard includes:
 
 * Salary Distribution
 * Top Hiring Cities
-* Industry-wise Salary Analysis
+* Industry-wise Salary
 * Work Mode Analysis
-* Company Type Analysis
+* Company Type Distribution
+* Hiring Trends
 
 ---
 
-## 🛠️ Technologies Used
+# 📁 Project Structure
 
-### Programming Language
-
-* Python
-
-### Libraries
-
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-Learn
-* XGBoost
-* Joblib
-* Streamlit
-
-### Development Tools
-
-* Jupyter Notebook
-* VS Code
-* GitHub
-* Streamlit Cloud
-
----
-
-## 📂 Project Structure
-
-```bash
-AI_Job_Salary_Prediction/
+```text
+AI_Job_Salary_Prediction
 │
 ├── app.py
-├── india_job_market_2024_2026.csv
-├── random_forest.pkl
-├── xgboost.pkl
-├── extra_trees.pkl
-├── gradient_boosting.pkl
-├── decision_tree.pkl
-├── scaler.pkl
-├── label_encoders.pkl
 ├── requirements.txt
 ├── README.md
+├── india_job_market_2024_2026.csv
 │
-└── notebooks/
-    └── model_training.ipynb
+├── Models
+│   ├── random_forest.pkl
+│   ├── xgboost.pkl
+│   ├── extra_trees.pkl
+│   ├── gradient_boosting.pkl
+│   ├── decision_tree.pkl
+│   ├── scaler.pkl
+│   └── label_encoders.pkl
+│
+├── notebooks
+│   └── model_training.ipynb
+│
+└── images
+    ├── dashboard.png
+    ├── prediction.png
+    └── workflow.png
 ```
 
 ---
 
-## ▶️ Installation
-
-### Clone Repository
+# 🚀 Installation
 
 ```bash
-git clone <repository-link>
-```
+git clone <repository-url>
 
-### Install Dependencies
+cd AI_Job_Salary_Prediction
 
-```bash
 pip install -r requirements.txt
-```
 
-### Run Application
-
-```bash
 streamlit run app.py
 ```
 
 ---
 
-## 📊 Results
+# 💻 Technologies Used
 
-The project achieved excellent performance in salary prediction.
+### Programming
 
-| Model             | R² Score |
-| ----------------- | -------- |
-| Random Forest     | 0.9337   |
-| XGBoost           | 0.9302   |
-| Extra Trees       | 0.9259   |
-| Gradient Boosting | 0.9051   |
-| Decision Tree     | 0.8581   |
+* Python
 
-Random Forest Regressor delivered the highest prediction accuracy and was selected as the best-performing model.
+### Machine Learning
+
+* Scikit-Learn
+* XGBoost
+
+### Data Analysis
+
+* Pandas
+* NumPy
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+
+### Deployment
+
+* Streamlit
+
+### Tools
+
+* VS Code
+* Jupyter Notebook
+* GitHub
 
 ---
 
-## 🎯 Future Improvements
+# 📊 Results
 
-* Deep Learning Integration
+The proposed system achieved excellent performance for salary prediction.
+
+✔ Best R² Score: **0.9337**
+
+✔ Five Machine Learning models compared
+
+✔ Interactive Web Application
+
+✔ Real-time Salary Prediction
+
+✔ Comprehensive Job Market Analytics
+
+---
+
+# 🚀 Future Scope
+
+* Deep Learning Models
 * Salary Recommendation Engine
-* Resume-Based Salary Prediction
-* Job Recommendation System
-* Explainable AI (XAI)
-* Real-Time Job Market Analysis
+* Resume-based Salary Prediction
+* Explainable AI (SHAP/LIME)
+* REST API using FastAPI
 * Cloud Deployment
-* API Integration using FastAPI
+* Live Job Market Integration
+* Auto Model Retraining
 
 ---
 
-## 👨‍💻 Author
+# 👨‍💻 Author
 
-Rishu Gurjar
+**Rishu Gurjar**
 
-B.Tech Student | Python Developer | Machine Learning Enthusiast | Data Science Learner
+🎓 B.Tech Computer Science
 
----
+🐍 Python Developer
 
-## 📌 Conclusion
+🤖 Machine Learning Enthusiast
 
-The AI-Powered Job Salary Prediction System successfully demonstrates the application of Machine Learning techniques to predict job salaries based on various job-related attributes such as job title, company type, industry, location, experience level, work mode, skills required, and company ratings.
-
-Multiple regression models were trained and evaluated, including Decision Tree, Gradient Boosting, Extra Trees, XGBoost, and Random Forest Regressors. Among all models, the Random Forest Regressor achieved the highest performance with an R² Score of 0.9337, making it the most accurate model for salary prediction.
-
-The project not only provides reliable salary predictions but also offers an interactive Streamlit dashboard for data visualization and model comparison. Through this project, valuable insights into the Indian job market were obtained, helping users understand salary trends across different industries, cities, and job roles.
-
-Overall, this project showcases the practical implementation of Data Science, Machine Learning, Data Visualization, and Web Application Development, making it a comprehensive real-world solution for salary prediction and job market analysis.
+📊 Data Science Learner
 
 ---
 
-## 📜 Disclaimer
+# ⭐ If you found this project useful, don't forget to Star this repository!
 
-This project is developed for educational, research, and learning purposes. Salary predictions generated by the system are based on historical job market data and machine learning models. Actual salary offerings may vary depending on company policies, market trends, candidate skills, and economic conditions.
+---
+
+# 📜 License
+
+This project is developed for educational, research, and learning purposes. Salary predictions are generated using Machine Learning models and should not be considered exact salary offers. Actual compensation may vary depending on company policies, candidate skills, market demand, and economic conditions.
