@@ -2,6 +2,15 @@
 
 ---
 
+🌐 Live Demo
+
+Experience the application online without any local setup:
+
+🚀 Live Application:
+https://jobsmarketprediction24-to-26.streamlit.app/
+
+---
+
 # 📌 Project Overview
 
 The **AI-Powered Job Salary Prediction System** is a Machine Learning web application that predicts the expected salary (LPA) of job opportunities using real-world job market features.
