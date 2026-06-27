@@ -21,6 +21,18 @@ The project also provides a complete **Job Market Analytics Dashboard** that hel
 
 ---
 
+## 🌟 Project Highlights
+
+* 🤖 **Multiple Machine Learning Models:** Users can choose from **Random Forest, XGBoost, Extra Trees, Gradient Boosting,** and **Decision Tree** for salary prediction.
+* 🔄 **Model Comparison:** Easily compare the performance and predictions of different Machine Learning algorithms within the same application.
+* 💰 **Real-Time Salary Prediction:** Predict expected job salaries instantly based on user-selected job details.
+* 📊 **Interactive Analytics Dashboard:** Explore salary distribution, hiring trends, industry insights, company types, and city-wise job analysis.
+* 🎯 **User-Friendly Interface:** Built with Streamlit, providing an intuitive and responsive web application.
+* 📈 **High Prediction Accuracy:** The best-performing model, **Random Forest Regressor**, achieved an **R² Score of 0.9337**.
+* 🌐 **Live Deployment:** The project is deployed on Streamlit Cloud for easy access without local installation.
+
+---
+
 # 🎯 Objectives
 
 * Predict salary using Machine Learning
