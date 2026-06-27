@@ -1,15 +1,5 @@
 # 💼 AI-Powered Job Salary Prediction System
 
-<p align="center">
-
-![Python](https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge\&logo=python)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge\&logo=scikitlearn)
-![XGBoost](https://img.shields.io/badge/XGBoost-Regressor-success?style=for-the-badge)
-![Streamlit](https://img.shields.io/badge/Streamlit-Web_App-red?style=for-the-badge\&logo=streamlit)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
-</p>
-
 ---
 
 # 📌 Project Overview
