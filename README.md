@@ -337,6 +337,12 @@ The proposed system achieved excellent performance for salary prediction.
 
 ---
 
+## 📌 Conclusion
+
+The **AI-Powered Job Salary Prediction System** is an end-to-end Machine Learning project that predicts job salaries based on various job-related features such as job title, company, industry, experience level, work mode, and education. Multiple regression models were trained and compared to identify the best-performing algorithm. Among them, the **Random Forest Regressor** achieved the highest accuracy with an **R² Score of 0.9337**. The project also includes an interactive **Streamlit web application** that enables real-time salary prediction and provides insightful data visualizations of the job market. Overall, this project demonstrates practical skills in data preprocessing, feature engineering, model evaluation, deployment, and building user-friendly AI applications for real-world use cases.
+
+---
+
 # 📜 License
 
 This project is developed for educational, research, and learning purposes. Salary predictions are generated using Machine Learning models and should not be considered exact salary offers. Actual compensation may vary depending on company policies, candidate skills, market demand, and economic conditions.
